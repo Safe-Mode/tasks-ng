@@ -12,10 +12,10 @@ export class CardComponent {
   product!: IProduct;
 
   @Output()
-  showInfo: EventEmitter<any> = new EventEmitter();
+  addToCart: EventEmitter<any> = new EventEmitter();
 
-  public showProduct(): void {
-    this.showInfo.emit(this.product);
+  public addProduct(): void {
+    this.addToCart.emit(this.product);
   }
 
 }

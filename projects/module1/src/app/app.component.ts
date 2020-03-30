@@ -9,10 +9,10 @@ import { product, IProduct } from './../mocks/products';
 export class AppComponent {
 
   public product: IProduct = product;
-  public choosenProduct!: IProduct;
+  public chosenProduct!: IProduct;
 
-  public getProduct(evt: IProduct): void {
-    this.choosenProduct = evt;
+  public addProduct(evt: IProduct): void {
+    this.chosenProduct = evt;
   }
 
 }
