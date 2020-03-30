@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { product, IProduct } from './../../mocks/products';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { IProduct } from './../../mocks/products';
 
 @Component({
   selector: 'app-shop-card',
@@ -8,6 +8,14 @@ import { product, IProduct } from './../../mocks/products';
 })
 export class CardComponent {
 
-  public product: IProduct = product;
+  @Input()
+  product!: IProduct;
+
+  @Output()
+  showInfo: EventEmitter<any> = new EventEmitter();
+
+  public showProduct(): void {
+    this.showInfo.emit(this.product);
+  }
 
 }
