@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {IProduct} from '../../mocks/products';
 
 @Component({
@@ -9,4 +9,11 @@ import {IProduct} from '../../mocks/products';
 export class CardComponent {
   @Input()
   product!: IProduct;
+
+  @Output()
+  addToCart = new EventEmitter<any>();
+
+  addProduct() {
+    this.addToCart.emit();
+  }
 }

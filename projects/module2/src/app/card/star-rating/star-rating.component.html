@@ -2,8 +2,7 @@
   <div
     class="stars-icon"
     *ngFor="let star of stars"
-    [ngClass]="{ 'gold-star': star !== starsIconEnum.BORDERED }"
   >
-    <mat-icon>{{ star }}</mat-icon>
+    <mat-icon [ngClass]="(star !== starsIconEnum.BORDERED) ? 'gold-star' : 'grey-star'">{{ star }}</mat-icon>
   </div>
 </div>

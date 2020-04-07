@@ -22,13 +22,13 @@ export class StarRatingComponent implements OnInit {
   intRating!: number;
 
   ngOnInit() {
-    if (this.rating && !Number.isInteger(this.rating)) {
+    if (this.rating) {
       this.intRating = Math.floor(this.rating);
 
       this.stars = this.stars.map((_, i) => {
-        if (i < this.intRating) {
+        if (i < this.intRating || (i === this.intRating && this.rating % this.intRating >= 0.75)) {
           return StarsIcon.FILLED;
-        } else if (Math.round(this.rating % this.intRating) && i === this.intRating) {
+        } else if (i === this.intRating && this.rating % this.intRating >= 0.25 && this.rating % this.intRating < 0.75) {
           return StarsIcon.HALF;
         } else {
           return StarsIcon.BORDERED;
