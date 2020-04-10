@@ -6,7 +6,7 @@
     <h5 class="card-title">{{ product.name }}</h5>
     <div class="rate">
       <div class="rate-amount ml-2">
-        <app-star-rating [rating]="product.rating"></app-star-rating>
+        <app-star-rating [rate]="product.rating"></app-star-rating>
       </div>
       <mat-icon class="product-add-to-cart" (click)="addProduct()">add_shopping_cart</mat-icon>
     </div>

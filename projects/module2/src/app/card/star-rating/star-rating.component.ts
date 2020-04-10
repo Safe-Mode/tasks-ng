@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 const MAX_RATING = 5;
 
@@ -15,20 +15,20 @@ export enum StarsIcon {
 })
 export class StarRatingComponent implements OnInit {
   @Input()
-  rating!: number;
+  rate!: number;
 
   starsIconEnum = StarsIcon;
   stars = new Array(MAX_RATING).fill('');
   intRating!: number;
 
   ngOnInit() {
-    if (this.rating) {
-      this.intRating = Math.floor(this.rating);
+    if (this.rate) {
+      this.intRating = Math.floor(this.rate);
 
       this.stars = this.stars.map((_, i) => {
-        if (i < this.intRating || (i === this.intRating && this.rating % this.intRating >= 0.75)) {
+        if (i < this.intRating || (i === this.intRating && this.rate % this.intRating >= 0.75)) {
           return StarsIcon.FILLED;
-        } else if (i === this.intRating && this.rating % this.intRating >= 0.25 && this.rating % this.intRating < 0.75) {
+        } else if (i === this.intRating && this.rate % this.intRating >= 0.25 && this.rate % this.intRating < 0.75) {
           return StarsIcon.HALF;
         } else {
           return StarsIcon.BORDERED;
