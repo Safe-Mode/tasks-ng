@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.productsService.getProducts()
-      .subscribe((products) => this.products = products.data);
+      .subscribe((products) => this.products = products);
   }
 
   addProduct() {

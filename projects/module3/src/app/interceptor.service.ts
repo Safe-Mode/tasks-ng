@@ -1,7 +1,8 @@
 import {Inject, Injectable} from '@angular/core';
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
+import {EMPTY, Observable} from 'rxjs';
 import {BASE_URL_TOKEN} from './config';
+import {catchError, filter, map} from 'rxjs/operators';
 
 export interface IRes {
   data: any;
@@ -17,7 +18,16 @@ export class InterceptorService implements HttpInterceptor {
       url: `${this.baseUrl}/${req.url}`,
       headers: req.headers.set('Content-Type', 'application/json')
     });
-    return next.handle(request);
+    return next.handle(request)
+      .pipe(
+        filter(this.isHttpResponse),
+        map(res => res.clone({ body: res?.body?.data })),
+        catchError(() => EMPTY)
+      );
+  }
+
+  private isHttpResponse(event: HttpEvent<any>): event is HttpResponse<any> {
+    return event instanceof HttpResponse;
   }
 
 }
