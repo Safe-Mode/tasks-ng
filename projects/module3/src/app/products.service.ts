@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {IRes} from './interceptor.service';
+
 export interface IProduct {
   _id: string;
   name: string;
@@ -24,5 +28,14 @@ export interface IProductImage {
 }
 
 @Injectable()
-export class ProductsService {}
+export class ProductsService {
+
+  constructor(private http: HttpClient) {
+  }
+
+  getProducts(): Observable<any> {
+    return this.http.get<IRes>('products');
+  }
+
+}
 
