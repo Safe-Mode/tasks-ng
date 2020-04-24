@@ -1,4 +1,4 @@
-<div class="feedback">
+<div class="feedback" [formGroup]="feedbackForm">
   <h2 class="feedback-title">Оставить отзыв</h2>
   <div class="feedback-inputs">
     <app-rating-controls></app-rating-controls>
@@ -28,7 +28,7 @@
     <textarea formControlName="description" type="text"></textarea>
   </div>
   <div class="feedback-btn">
-    <button class="feedback-btn-control">
+    <button class="feedback-btn-control" (click)="save()">
       Оставить отзыв
     </button>
   </div>

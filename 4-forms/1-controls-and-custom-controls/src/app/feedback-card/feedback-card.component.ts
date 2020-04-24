@@ -1,8 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IFeedback } from '../../mocks/feedbacks';
 
 @Component({
   selector: 'app-feedback-card',
   templateUrl: './feedback-card.component.html',
   styleUrls: ['./feedback-card.component.scss'],
 })
-export class FeedbackCardComponent {}
+export class FeedbackCardComponent {
+
+  @Input() feedback!: IFeedback;
+
+}
