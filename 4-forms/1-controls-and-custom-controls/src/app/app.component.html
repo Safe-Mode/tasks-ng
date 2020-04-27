@@ -71,7 +71,7 @@
 
   <!-- Content -->
   <div class="content-wrap">
-    <app-feedback-form class="content-block"></app-feedback-form>
+    <app-feedback-form class="content-block" (createFeedback)="addFeedback($event)"></app-feedback-form>
 
     <div class="feedbacks" *ngIf="feedbacks.length">
       <div *ngFor="let feedback of feedbacks">

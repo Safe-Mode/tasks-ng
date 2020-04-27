@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { IFeedback } from '../../mocks/feedbacks';
 
 @Component({
   selector: 'app-feedback-form',
@@ -7,24 +8,23 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./feedback-form.component.scss'],
 })
 export class FeedbackFormComponent implements OnInit {
+  @Output() createFeedback = new EventEmitter<IFeedback>();
 
   feedbackForm!: FormGroup;
 
   ngOnInit(): void {
-    const { required } = Validators;
+    const { required, minLength } = Validators;
 
     this.feedbackForm = new FormGroup({
-      advantages: new FormControl('', required),
-      limitations: new FormControl('', required),
-      description: new FormControl('')
+      rateControl: new FormControl(''),
+      advantages: new FormControl('', [required, minLength(10)]),
+      limitations: new FormControl('', [required, minLength(10)]),
+      description: new FormControl('', [required, minLength(10)])
     });
   }
 
-  createFeedback():void {
-
-  }
-
-  save():void {
-
+  save(): void {
+    this.createFeedback.emit(this.feedbackForm.value);
+    this.feedbackForm.reset();
   }
 }

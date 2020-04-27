@@ -12,4 +12,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.feedbacks = feedbacks;
   }
+
+  addFeedback(feedback: IFeedback): void {
+    this.feedbacks.unshift(feedback);
+  }
 }
