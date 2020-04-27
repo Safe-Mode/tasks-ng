@@ -19,7 +19,7 @@ type IRate = number | null;
 export class RatingControlsComponent implements ControlValueAccessor, OnInit {
   private rateControl!: IRate;
 
-  fakeRate!: number | null;
+  fakeRate!: IRate;
   starsIconEnum = StarsIcon;
   stars = new Array(MAX_RATING).fill('');
 
