@@ -27,10 +27,10 @@ export interface IProductImage {
 
 @Injectable()
 export class ProductsService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public getProducts(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(`/products`);
+    return this.http.get<IProduct[]>(`products`);
   }
   public getProduct(id: string | null): Observable<IProduct> {
     return this.http.get<IProduct>(`/products/${id}`);
